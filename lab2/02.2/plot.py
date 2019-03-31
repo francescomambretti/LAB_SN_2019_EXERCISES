@@ -20,6 +20,7 @@ x,f,error = np.loadtxt("RW3D_continuum.dat", usecols=(0,1,2), delimiter=' ', unp
 
 p_opt, p_cov = curve_fit(f_fit, x, f)
 y_fit = f_fit(x,p_opt[0])
+print (y_fit/x)
 plt.errorbar(x,f,error,color='C2',fmt='o',markersize='2',capsize=3,label="Continuous")
 
 plt.xlabel('Step')
