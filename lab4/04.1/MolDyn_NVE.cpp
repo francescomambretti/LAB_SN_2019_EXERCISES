@@ -12,7 +12,7 @@ _/    _/  _/_/_/  _/_/_/_/ email: Davide.Galli@unimi.it
 #include <fstream>      // Stream class to both read and write from/to files.
 #include <cmath>        // rint, pow
 #include "MolDyn_NVE.h"
-#define RESTART //if it is defined, read velocities from config.0 file, otherwise ignore them and generate random velocities
+//#define RESTART //if it is defined, read velocities from config.0 file, otherwise ignore them and generate random velocities
 
 using namespace std;
 
@@ -111,7 +111,7 @@ void Input(void){ //Prepare all stuff for the simulation
      vx[i] = rand() - 0.5;
      vy[i] = rand() - 0.5;
      vz[i] = rand() - 0.5;
-
+	cout << vx[i] << endl;
      sumv[0] += vx[i];
      sumv[1] += vy[i];
      sumv[2] += vz[i];
