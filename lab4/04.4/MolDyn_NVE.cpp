@@ -12,7 +12,7 @@ _/    _/  _/_/_/  _/_/_/_/ email: Davide.Galli@unimi.it
 #include <fstream>      // Stream class to both read and write from/to files.
 #include <cmath>        // rint, pow
 #include "MolDyn_NVE.h"
-#define RESTART //if it is defined, read velocities from config.0 file, otherwise ignore them and generate random velocities
+//#define RESTART //if it is defined, read velocities from config.0 file, otherwise ignore them and generate random velocities
 
 using namespace std;
 
@@ -29,7 +29,7 @@ int main(){
        			if(istep%iprint == 0) cout << "Number of time-steps: " << istep << endl;
        			if(istep%10 == 0){
           			Measure();     //Properties measurement
-		//          ConfXYZ(nconf);//Write actual configuration in XYZ format //Commented to avoid "filesystem full"! 
+		          ConfXYZ(nconf);//Write actual configuration in XYZ format //Commented to avoid "filesystem full"! 
           			nconf += 1;
        			}
 			Accumulate();
@@ -108,9 +108,9 @@ void Input(void){ //Prepare all stuff for the simulation
 #ifndef RESTART //If I am equilibrating
    cout << "Prepare random velocities with center of mass velocity equal to zero " << endl << endl; 
    for (int i=0; i<npart; ++i){
-     vx[i] = rand() - 0.5;
-     vy[i] = rand() - 0.5;
-     vz[i] = rand() - 0.5;
+     vx[i] = ((double) rand() / (RAND_MAX)) - 0.5;
+     vy[i] = ((double) rand() / (RAND_MAX)) - 0.5;
+     vz[i] = ((double) rand() / (RAND_MAX)) - 0.5;
 
      sumv[0] += vx[i];
      sumv[1] += vy[i];
@@ -248,7 +248,7 @@ void Measure(){ //Properties measurement
     stima_pot = v/(double)npart; //Potential energy per particle
     stima_kin = t/(double)npart; //Kinetic energy per particle
     stima_temp = (2.0 / 3.0) * t/(double)npart; //Temperature
-    if (fabs(stima_temp-temp)>0.01){
+    if (fabs(stima_temp-temp)>0.5){
     //rescale velocities
 	for (int i=0; i<npart; ++i){
 		vx[i]=vx[i]*sqrt(temp/stima_temp);

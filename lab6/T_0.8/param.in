@@ -1,0 +1,13 @@
+100
+100000
+100
+10000
+0.8
+0
+
+Read >> N
+Read >> steps
+Read >> blocks
+Read >> steps_equil
+Read >> T
+Read >> h

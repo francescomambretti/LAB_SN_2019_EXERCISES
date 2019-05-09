@@ -60,12 +60,12 @@ int main(){
 			//misura
 			ave_r+=sqrt(r[0]*r[0]+r[1]*r[1]+r[2]*r[2]);
 			//proponi update
-			/*dx=rnd.Rannyu(-0.5,0.5)*delta1; 
+			dx=rnd.Rannyu(-0.5,0.5)*delta1; 
 			dy=rnd.Rannyu(-0.5,0.5)*delta1;
-			dz=rnd.Rannyu(-0.5,0.5)*delta1;*/
-			dx=rnd.Gauss(0,0.5*delta1);
+			dz=rnd.Rannyu(-0.5,0.5)*delta1;
+			/*dx=rnd.Gauss(0,0.5*delta1);
 			dy=rnd.Gauss(0,0.5*delta1);
-			dz=rnd.Gauss(0,0.5*delta1);
+			dz=rnd.Gauss(0,0.5*delta1);*/
 			//accettalo eventualmente
 			if (rnd.Rannyu() < min ( prob(r[0]+dx,r[1]+dy,r[2]+dz, true)/(prob(r[0],r[1],r[2], true)) , 1.) ){
 				r[0]+=dx;
